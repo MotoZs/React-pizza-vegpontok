@@ -1,20 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import Pizzak from './pages/Pizzak'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import EgyPizza from './pages/EgyPizza'
-import UjPizza from './pages/UjPizza'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import AllPizza from "./pages/AllPizza";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import OnePizza from "./pages/OnePizza";
+import NewPizza from "./pages/NewPizza";
+import EditPizza from "./pages/EditPizza";
+import NotFoundPage from "./pages/errors/NotFoundPage"
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Pizzak/>} />
-        <Route path="/pizza/:id" element={<EgyPizza/>} />
-        <Route path="/ujpizza" element={<UjPizza/>} />
-        <Route path="*" element={<h1>404, Az oldal nem található!</h1>} />
+        <Route path="/" element={<AllPizza />} />
+        <Route path="/pizza/:id" element={<OnePizza />} />
+        <Route path="/edit-pizza/:id" element={<EditPizza />} />
+        <Route path="/new-pizza" element={<NewPizza />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer theme="colored" />
