@@ -2,8 +2,11 @@ import { useState } from "react";
 import type { Pizza } from "../types/Pizza";
 import apiClient from "../api/apiClient";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const NewPizza = () => {
+  const navigate = useNavigate();
+
   const [pizza, setPizza] = useState<Pizza>({
     nev: "",
     leiras: "",
@@ -14,7 +17,10 @@ const NewPizza = () => {
   const submit = () => {
     apiClient
       .post("/pizzak", pizza)
-      .then(() => toast.success("Sikeres hozzáadás!"))
+      .then(() => {
+        toast.success("Sikeres hozzáadás!");
+        navigate(`/`);
+      })
       .catch(() => toast.error("Sikertelen hozzáadás!"));
   };
 

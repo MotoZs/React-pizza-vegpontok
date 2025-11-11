@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient, { baseURL } from "../api/apiClient";
 import type { Pizza } from "../types/Pizza";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AllPizza = () => {
   const navigate = useNavigate();
@@ -18,6 +18,10 @@ const AllPizza = () => {
 
   return (
     <>
+      <h1>Pizzák</h1>
+
+      <Link to="/new-pizza"><button>Új pizza hozzáadása</button></Link>
+
       <table>
         <thead>
           <th>Név</th>
